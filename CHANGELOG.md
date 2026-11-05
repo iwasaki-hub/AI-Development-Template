@@ -2,6 +2,23 @@
 
 本ファイルは共通開発テンプレートの変更を記録します。導入先プロジェクトの開発履歴は、そのプロジェクトで管理します。
 
+## 1.3.0 — 受入・セキュリティ・リリース品質
+
+- Gate 0〜7と既存安全規則を保持し、対象ユーザーに応じたアクセシビリティ・実機受入と保証範囲の区別を追加。
+- 監査の本番/開発依存・取得成否・影響経路、限定overrideの互換性・承認・解除条件、Webで選択するCSP等の段階導入と復旧を明確化。
+- 要件・版/lockfile・操作/保存制限・配布方針・既知リスクをリリース判定へ統合。準備PRマージ、正式Goとリスク受容、各公開操作の承認を分離。
+- タグ名未使用・対象commit固定、注釈付き採用方針、Releaseノートと公開状態確認、既存タグ保護を追加。
+- 正規認証、資格情報の非抽出・無断転用禁止、安全機構の回避禁止、停止/再開時の再検証を明記。証拠をユーザー報告・直接実測・CIログ・外部API・過去記録・未確認に分類。
+- プロファイルを追加欄で拡張し、AGENTSに参照・停止条件を最小限追記。既存欄・ファイル名・最大3回・Head変更時再承認を維持し、不要工程は理由付きN/Aとする。
+
+### Phase 6〜7の根拠と限界
+
+[Todo App v1.0.0 Release](https://github.com/iwasaki-hub/todo-app/releases/tag/v1.0.0)と、対象commit `13a3e7f1fe40fe7d57b45cf276f367f62fd57eba` の[Phase 6履歴](https://github.com/iwasaki-hub/todo-app/blob/13a3e7f1fe40fe7d57b45cf276f367f62fd57eba/docs/development-history/phase-06-development-log.md)、[リリース判定資料](https://github.com/iwasaki-hub/todo-app/blob/13a3e7f1fe40fe7d57b45cf276f367f62fd57eba/docs/release/v1.0.0-readiness.md)、[限定override](https://github.com/iwasaki-hub/todo-app/blob/13a3e7f1fe40fe7d57b45cf276f367f62fd57eba/docs/security/minimatch-override.md)、[HTTP設定記録](https://github.com/iwasaki-hub/todo-app/blob/13a3e7f1fe40fe7d57b45cf276f367f62fd57eba/docs/security/http-security-headers.md)を一般化した。
+
+資料は手動43件・CSP後Chrome9件をユーザー報告とし、自動検査・CI・公開APIと区別している。Releaseの59件/15件成功やWindows監査0件は過去の実績であり、Ubuntu監査や全環境・全API互換性の保証ではない。限定overrideの要求範囲外・16比較差分、CSPによる管理ツール遮断等の残存リスクを受容し、準備時のConditional Goとは別の正式Go・公開承認を経てReleaseされた記録を参照した。今回Todoのテスト・監査・手動受入は再実行していない。
+
+本節は改訂内容を記録する。テンプレート自身のマージ・タグ・Releaseの状態はGitHub履歴を参照する。
+
 ## 1.2.0 — CI保護と検証証跡の強化
 
 - Gate 0〜7を補強し、CIトリガー・責務・必須チェックの発行元、保護設定と権限、最新Headに対応する結果の確認を明確化。
